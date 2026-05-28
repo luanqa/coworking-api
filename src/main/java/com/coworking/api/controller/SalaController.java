@@ -8,7 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+import org.springframework.format.annotation.DateTimeFormat;
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -25,5 +26,11 @@ public class SalaController {
     @GetMapping
     public ResponseEntity<List<Sala>> listar(){
         return ResponseEntity.ok(salaService.listarTodas());
+    }
+
+    @GetMapping("/livres")
+    public ResponseEntity<List<Sala>> salasLivres(
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate data) {
+        return ResponseEntity.ok(salaService.consultarSalasLivres(data));
     }
 }
