@@ -11,28 +11,6 @@ API REST para gerenciamento de reservas de salas e auditórios para empresas de 
 - Lombok
 - Bean Validation
 
-## Como executar sem Docker
-
-### Pré-requisitos
-
-- Java 17 instalado
-
-### Passos
-
-1. Clone o repositório:
-
-git clone https://github.com/luanqa/coworking-api.git
-
-2. Acesse a pasta do projeto:
-
-cd coworking-api
-
-3. Execute o projeto:
-
-./mvnw spring-boot:run
-
-A aplicação estará disponível em http://localhost:8080
-
 ## Como executar com Docker
 
 ### Pré-requisitos
@@ -42,22 +20,33 @@ A aplicação estará disponível em http://localhost:8080
 ### Passos
 
 1. Clone o repositório:
-
+```
 git clone https://github.com/luanqa/coworking-api.git
-
+```
 2. Acesse a pasta do projeto:
-
+```
 cd coworking-api
-
+```
 3. Build da imagem:
-
-docker build -t coworking-api .
-
+```
+docker build -t coworking-api
+```
 4. Execute o container:
-
+```
 docker run -p 8080:8080 coworking-api
+```
 
-A aplicação estará disponível em http://localhost:8080
+
+## Testando com Postman
+
+Uma collection do Postman está disponível no repositório no arquivo coworking-api.postman_collection.json.
+
+Para importar:
+1. Abra o Postman
+2. Clique em Import
+3. Selecione o arquivo coworking-api.postman_collection.json
+4. Todos os endpoints já estarão prontos para uso
+
 ## Banco de dados
 
 O console do H2 está disponível em http://localhost:8080/h2-console com as configurações:
@@ -86,11 +75,12 @@ O console do H2 está disponível em http://localhost:8080/h2-console com as con
 ## Exemplos de uso
 
 ### Cadastrar sala
-
+```
 POST /salas
 { "nome": "Sala de Reunião A", "tipo": "COLETIVA" }
-
+```
 ### Criar reserva
-
+```
 POST /reservas
-{ "salaId": 1, "responsavel": "João Silva", "data": "2026-06-01",
+{ "salaId": 1, "responsavel": "João Silva", "data": "2026-06-01"}
+```
