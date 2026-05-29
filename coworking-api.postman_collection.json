@@ -1,0 +1,70 @@
+{
+  "info": {
+    "name": "Coworking API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Salas",
+      "item": [
+        {
+          "name": "Cadastrar Sala",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Sala de Reunião A\",\n  \"tipo\": \"COLETIVA\"\n}"
+            },
+            "url": { "raw": "http://localhost:8080/salas", "host": ["localhost"], "port": "8080", "path": ["salas"] }
+          }
+        },
+        {
+          "name": "Listar Salas",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "http://localhost:8080/salas", "host": ["localhost"], "port": "8080", "path": ["salas"] }
+          }
+        },
+        {
+          "name": "Salas Livres por Data",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "http://localhost:8080/salas/livres?data=2026-06-01", "host": ["localhost"], "port": "8080", "path": ["salas", "livres"], "query": [{ "key": "data", "value": "2026-06-01" }] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Reservas",
+      "item": [
+        {
+          "name": "Criar Reserva",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"salaId\": 1,\n  \"responsavel\": \"João Silva\",\n  \"data\": \"2026-06-01\",\n  \"horaInicio\": \"09:00\",\n  \"horaFim\": \"11:00\"\n}"
+            },
+            "url": { "raw": "http://localhost:8080/reservas", "host": ["localhost"], "port": "8080", "path": ["reservas"] }
+          }
+        },
+        {
+          "name": "Consultar Agenda do Dia",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "http://localhost:8080/reservas/agenda?data=2026-06-01", "host": ["localhost"], "port": "8080", "path": ["reservas", "agenda"], "query": [{ "key": "data", "value": "2026-06-01" }] }
+          }
+        },
+        {
+          "name": "Cancelar Reserva",
+          "request": {
+            "method": "DELETE",
+            "url": { "raw": "http://localhost:8080/reservas/1", "host": ["localhost"], "port": "8080", "path": ["reservas", "1"] }
+          }
+        }
+      ]
+    }
+  ]
+}
