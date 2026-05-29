@@ -11,7 +11,7 @@ API REST para gerenciamento de reservas de salas e auditórios para empresas de 
 - Lombok
 - Bean Validation
 
-## Como executar
+## Como executar sem Docker
 
 ### Pré-requisitos
 
@@ -30,6 +30,32 @@ cd coworking-api
 3. Execute o projeto:
 
 ./mvnw spring-boot:run
+
+A aplicação estará disponível em http://localhost:8080
+
+## Como executar com Docker
+
+### Pré-requisitos
+
+- Docker instalado
+
+### Passos
+
+1. Clone o repositório:
+
+git clone https://github.com/luanqa/coworking-api.git
+
+2. Acesse a pasta do projeto:
+
+cd coworking-api
+
+3. Build da imagem:
+
+docker build -t coworking-api .
+
+4. Execute o container:
+
+docker run -p 8080:8080 coworking-api
 
 A aplicação estará disponível em http://localhost:8080
 ## Banco de dados
@@ -67,32 +93,4 @@ POST /salas
 ### Criar reserva
 
 POST /reservas
-{ "salaId": 1, "responsavel": "João Silva", "data": "2026-06-01", "horaInicio": "09:00", "horaFim": "11:00" }
-
-### Consultar agenda do dia
-
-GET /reservas/agenda?data=2026-06-01
-
-### Consultar salas livres
-
-GET /salas/livres?data=2026-06-01
-
-### Cancelar reserva
-
-DELETE /reservas/1
-
-## Tipos de sala
-
-- INDIVIDUAL — Sala de reunião individual
-- COLETIVA — Sala de reunião coletiva
-- AUDITORIO — Auditório
-
-## Testando com Postman
-
-Uma collection do Postman está disponível no repositório no arquivo coworking-api.postman_collection.json.
-
-Para importar:
-1. Abra o Postman
-2. Clique em Import
-3. Selecione o arquivo coworking-api.postman_collection.json
-4. Todos os endpoints já estarão prontos para uso
+{ "salaId": 1, "responsavel": "João Silva", "data": "2026-06-01",
